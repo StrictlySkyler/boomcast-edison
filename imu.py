@@ -47,17 +47,16 @@ while True:
     fusionPose = data["fusionPose"]
 
     count += 1
-    # print count
     read_time = "%i" % (time.time() * 100)
     r = round(math.degrees(fusionPose[0]), 3)
     p = round(math.degrees(fusionPose[1]), 3)
     y = round(math.degrees(fusionPose[2]), 3)
 
     orientations[read_time] = {'r': r, 'p': p, 'y': y}
-    print("r: %f p: %f y: %f time: %.2f" % (math.degrees(fusionPose[0]), 
-         math.degrees(fusionPose[1]), math.degrees(fusionPose[2]), time.time()))
+    # print("r: %f p: %f y: %f time: %.2f" % (math.degrees(fusionPose[0]), 
+    #     math.degrees(fusionPose[1]), math.degrees(fusionPose[2]), time.time()))
     if (count > max_count):
-        # print json.dumps(orientations)
+        print json.dumps(orientations)
         orientations.clear()
         count = 0
     time.sleep(poll_interval*1.0/1000.0)
