@@ -31,10 +31,12 @@ imu.setGyroEnable(True)
 imu.setAccelEnable(True)
 imu.setCompassEnable(True)
 
-poll_interval = imu.IMUGetPollInterval()
+# poll_interval = imu.IMUGetPollInterval()
+poll_interval = 100
 # print("Recommended Poll Interval: %dmS\n" % poll_interval)
 
 count = 0
+max_count = 1000 / poll_interval - 1
 orientations = {}
 
 while True:
@@ -46,7 +48,7 @@ while True:
 
     count += 1
     # print count
-    read_time = "%.2f" % (time.time())
+    read_time = "%i" % (time.time() * 100)
     r = round(math.degrees(fusionPose[0]), 3)
     p = round(math.degrees(fusionPose[1]), 3)
     y = round(math.degrees(fusionPose[2]), 3)
@@ -54,7 +56,7 @@ while True:
     orientations[read_time] = {'r': r, 'p': p, 'y': y}
     # print("r: %f p: %f y: %f time: %.2f" % (math.degrees(fusionPose[0]), 
     #     math.degrees(fusionPose[1]), math.degrees(fusionPose[2]), time.time()))
-    if (count > 99):
+    if (count > max_count):
         print json.dumps(orientations)
         orientations.clear()
         count = 0
