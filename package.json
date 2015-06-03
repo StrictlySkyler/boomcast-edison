@@ -1,0 +1,22 @@
+{
+  "name": "boomcast-edison",
+  "version": "0.0.1",
+  "description": "Device data gathering from BoomCast hardware.",
+  "main": "boomcast.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StrictlySkyler/boomcast-edison.git"
+  },
+  "author": "Skyler Brungardt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StrictlySkyler/boomcast-edison/issues"
+  },
+  "homepage": "https://github.com/StrictlySkyler/boomcast-edison#readme",
+  "dependencies": {
+    "firebase": "^2.2.6"
+  }
+}
