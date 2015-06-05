@@ -14,9 +14,10 @@ var options = {
   mode: 'text',
   scriptPath: '/home/boomcast/RTIMULib/Linux/python/tests'
 };
- 
-PythonShell.run('Fusion.py', options, function (err, results) {
-  if (err) throw err;
-  // results is an array consisting of messages collected during execution 
-  console.log('results: %j', results);
+
+var shell = new PythonShell('Fusion.py', options);
+
+shell.on('message', function (message) {
+  // handle message (a line of text from stdout) 
+  console.log(message);
 });
