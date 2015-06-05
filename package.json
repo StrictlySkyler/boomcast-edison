@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/StrictlySkyler/boomcast-edison#readme",
   "dependencies": {
-    "firebase": "^2.2.6"
+    "firebase": "^2.2.6",
+    "python-shell": "^0.1.0"
   }
 }
