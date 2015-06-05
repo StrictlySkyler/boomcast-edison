@@ -1,15 +1,8 @@
-// var PythonShell = require('python-shell');
-
-// var path = '/home/boomcast/RTIMULib/Linux/python/tests/Fusion.py'
-
-// var shell = new PythonShell(path, { mode: 'text '});
-
-// shell.on('message', function (message) {
-//   console.log(message);
-// });
-
+var Firebase = require('firebase');
 var PythonShell = require('python-shell');
- 
+
+var orientation = new Firebase('https://boomcast.firebaseio.com/orientation');
+
 var options = {
   mode: 'text',
   scriptPath: '/home/boomcast/RTIMULib/Linux/python/tests'
@@ -18,6 +11,6 @@ var options = {
 var shell = new PythonShell('Fusion.py', options);
 
 shell.on('message', function (message) {
-  // handle message (a line of text from stdout) 
-  console.log(message);
+  // console.log(message);
+  orientation.push({ 'time': new Date(), 'orientation': message' });
 });
