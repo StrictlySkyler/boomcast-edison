@@ -12,7 +12,6 @@ var PythonShell = require('python-shell');
  
 var options = {
   mode: 'text',
-  pythonPath: '/usr/lib/python2.7',
   scriptPath: '/home/boomcast/RTIMULib/Linux/python/tests'
 };
  
