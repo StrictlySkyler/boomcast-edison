@@ -12,5 +12,5 @@ var shell = new PythonShell('Fusion.py', options);
 
 shell.on('message', function (message) {
   // console.log(message);
-  orientation.push({ 'time': new Date(), 'orientation': message' });
+  orientation.push({ 'time': new Date(), 'orientation': message });
 });
