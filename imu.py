@@ -5,23 +5,24 @@ import RTIMU
 import os.path
 import time
 import math
+import json
 
 SETTINGS_FILE = "RTIMULib"
 
-print("Using settings file " + SETTINGS_FILE + ".ini")
-if not os.path.exists(SETTINGS_FILE + ".ini"):
-  print("Settings file does not exist, will be created")
+# print("Using settings file " + SETTINGS_FILE + ".ini")
+# if not os.path.exists(SETTINGS_FILE + ".ini"):
+  # print("Settings file does not exist, will be created")
 
 s = RTIMU.Settings(SETTINGS_FILE)
 imu = RTIMU.RTIMU(s)
 
-print("IMU Name: " + imu.IMUName())
+# print("IMU Name: " + imu.IMUName())
 
 if (not imu.IMUInit()):
     print("IMU Init Failed")
     sys.exit(1)
-else:
-    print("IMU Init Succeeded")
+# else:
+    # print("IMU Init Succeeded")
 
 # this is a good time to set any fusion parameters
 
@@ -31,7 +32,7 @@ imu.setAccelEnable(True)
 imu.setCompassEnable(True)
 
 poll_interval = imu.IMUGetPollInterval()
-print("Recommended Poll Interval: %dmS\n" % poll_interval)
+# print("Recommended Poll Interval: %dmS\n" % poll_interval)
 
 count = 0
 orientations = {}
@@ -54,7 +55,7 @@ while True:
     # print("r: %f p: %f y: %f time: %.2f" % (math.degrees(fusionPose[0]), 
     #     math.degrees(fusionPose[1]), math.degrees(fusionPose[2]), time.time()))
     if (count > 99):
-        print orientations
+        print json.dumps(orientations)
         orientations.clear()
         count = 0
     time.sleep(poll_interval*1.0/1000.0)
