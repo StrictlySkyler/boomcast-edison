@@ -5,6 +5,7 @@ var orientation = new Firebase('https://boomcast.firebaseio.com/orientation');
 
 var gyro_options = {
   mode: 'text',
+  scriptPath: '/boomcast'
 };
 
 var gyro = new PythonShell('imu.py', gyro_options);

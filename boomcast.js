@@ -1,3 +1,3 @@
-require('imu');
-require('led');
-require('pressure');
+require('./modules/imu');
+//require('led');
+//require('pressure');
