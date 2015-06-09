@@ -34,6 +34,7 @@ poll_interval = imu.IMUGetPollInterval()
 print("Recommended Poll Interval: %dmS\n" % poll_interval)
 
 count = 0
+orientations = {}
 
 while True:
   if imu.IMURead():
@@ -42,14 +43,14 @@ while True:
     data = imu.getIMUData()
     fusionPose = data["fusionPose"]
 
-    count++
-    print count
-    time = "%.2f" % (time.time())
-    r = math.degrees(fusionPose[0]
-    p = math.degrees(fusionPose[1]
-    y = math.degrees(fusionPose[2]
+    count += 1
+    # print count
+    read_time = "%.2f" % (time.time())
+    r = round(math.degrees(fusionPose[0]), 3)
+    p = round(math.degrees(fusionPose[1]), 3)
+    y = round(math.degrees(fusionPose[2]), 3)
 
-    orientations[time] = {'r': r, 'p': p, 'y': y}
+    orientations[read_time] = {'r': r, 'p': p, 'y': y}
     # print("r: %f p: %f y: %f time: %.2f" % (math.degrees(fusionPose[0]), 
     #     math.degrees(fusionPose[1]), math.degrees(fusionPose[2]), time.time()))
     if (count > 99):
