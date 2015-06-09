@@ -1,3 +1,3 @@
 require('./modules/imu');
-//require('led');
-//require('pressure');
+require('./modules/led');
+require('./modules/pressure');
