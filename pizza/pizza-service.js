@@ -1,5 +1,5 @@
 var util = require('util');
-var bleno = require('../..');
+var bleno = require('bleno');
 
 var PizzaCrustCharacteristic = require('./pizza-crust-characteristic');
 var PizzaToppingsCharacteristic = require('./pizza-toppings-characteristic');

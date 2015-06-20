@@ -4,7 +4,7 @@ var util = require('util');
 // Require bleno peripheral library.
 // https://github.com/sandeepmistry/bleno
 //
-var bleno = require('../..');
+var bleno = require('bleno');
 
 //
 // Pizza
