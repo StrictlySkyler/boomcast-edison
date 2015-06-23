@@ -2,10 +2,11 @@ var Firebase = require('firebase');
 var PythonShell = require('python-shell');
 
 var orientation = new Firebase('https://boomcast.firebaseio.com/orientation');
+var log = new Firebase('https://boomcast.firebaseio.com/log');
 
 var gyro_options = {
   mode: 'text',
-  scriptPath: '/boomcast'
+  scriptPath: '/home/boomcast/www/boomcast-edison'
 };
 
 var gyro = new PythonShell('imu.py', gyro_options);
