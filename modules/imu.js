@@ -12,15 +12,26 @@ var gyro_options = {
 var gyro = new PythonShell('imu.py', gyro_options);
 
 gyro.on('message', function (message) {
-  
+    var shouldLog;
+    log.on('value', function (data) {
+        switch(data.val()) {
+            case false:
+                shouldLog = false;
+                break;
+            case true:
+                shouldLog = true;
+                break;
+        }
+    });  
   var date = new Date();
   var dateformat = date.getDate();
   dateformat+="-";
   dateformat+=date.getMonth()+1;
   dateformat+="-";
   dateformat+=date.getFullYear();
-  // console.log(message);
-  // orientation.push({ 'timestamp': Date.now(), 'time': Date(), 'orientation': message });
   var parsed = JSON.parse(message)
-  orientation.child(dateformat).push(parsed);
+  if (shouldLog) {
+    orientation.child(dateformat).push(parsed);
+  }
 });
+
